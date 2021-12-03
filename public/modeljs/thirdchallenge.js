@@ -80,7 +80,7 @@ async function predict() {
         console.log(number, label)
         setTimeout(() => {
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-        }, 4000);
+        }, 5000);
         if (number == 50) {
             localStorage.setItem('levelDone', 'Hello');
             //labelContainer.innerHTML = "Congratulations you know how to sign " + label;
@@ -97,7 +97,7 @@ async function predict() {
         console.log(number, label)
         setTimeout(() => {
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-        }, 4000);
+        }, 5000);
         if (number == 50) {
             localStorage.setItem('levelDone', 'Please');
             //labelContainer.innerHTML = "Congratulations you know how to sign " + label;

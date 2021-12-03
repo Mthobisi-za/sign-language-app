@@ -7,7 +7,7 @@ let model, webcam, ctx, labelContainer, maxPredictions;
 
 (async() => {
     var namee = localStorage.getItem('name')
-    var local = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + namee)
+    var local = await axios.get('https://basic-sign-language-api.herokuapp.com/getuser/' + namee)
     console.log(local.data);
     if (local.data.data.levelName) {
         if (local === 'Hello') {
@@ -70,34 +70,34 @@ async function predict() {
 
     var name = localStorage.getItem('name');
     //console.log(name)
-    var status = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + name);
+    var status = await axios.get('https://basic-sign-language-api.herokuapp.com/getuser/' + name);
     if (status.data.userStatus == 'New User') {
         console.log('true');
         var number = ((prediction[2].probability.toFixed(2)) * 100)
         var label = prediction[2].className
         console.log(number, label)
-        labelContainer.innerHTML = label + ': ' + number + '%';
+
         // location.replace('./learn-Thank_you.html');
 
-        if (number == 100) {
+        if (number == 4) {
             localStorage.setItem('levelDone', 'Hello');
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-            await axios.post('http://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
+            await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
             location.replace('./learn-Thank_you.html');
             var btn = document.querySelector('.hide')
             btn.style.display = "block"
         } else {
-
+            labelContainer.innerHTML = "Keep trying to sign " + label;
         }
     } else {
         var number = ((prediction[2].probability.toFixed(2)) * 100)
         var label = prediction[2].className
         console.log(number, label)
-        if (number == 100) {
+        if (number == 4) {
             localStorage.setItem('levelDone', 'Thank You');
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
 
-            await axios.post('http://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Thank you', score: 20 })
+            await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Thank you', score: 20 })
             location.replace('./learn-ILVU.html');
         } else {
             labelContainer.innerHTML = "Keep trying to sign " + label;

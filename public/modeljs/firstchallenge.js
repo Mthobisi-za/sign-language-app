@@ -5,7 +5,7 @@
 const URL = "https://teachablemachine.withgoogle.com/models/s8BSQju4G/";
 let model, webcam, ctx, labelContainer, maxPredictions;
 
-(async () => {
+(async() => {
     var namee = localStorage.getItem('name')
     var local = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + namee)
     console.log(local.data);
@@ -40,7 +40,8 @@ async function init() {
 
     // append/get elements to the DOM
     const canvas = document.getElementById("canvas");
-    canvas.width = size; canvas.height = size;
+    canvas.width = size;
+    canvas.height = size;
     ctx = canvas.getContext("2d");
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) { // and class labels
@@ -73,10 +74,10 @@ async function predict() {
     console.log(status)
     if (status.data.userStatus == 'New User') {
         console.log('true');
-        var number = ((prediction[0].probability.toFixed(2)) * 100)
-        var label = prediction[0].className
+        var number = ((prediction[1].probability.toFixed(2)) * 100)
+        var label = prediction[1].className
         console.log(number, label)
-        //  location.replace('./learn-Thank_you.html');
+            //  location.replace('./learn-Thank_you.html');
 
         if (number == 100) {
             localStorage.setItem('levelDone', 'Hello');
@@ -89,8 +90,8 @@ async function predict() {
 
         }
     } else {
-        var number = ((prediction[0].probability.toFixed(2)) * 100)
-        var label = prediction[0].className
+        var number = ((prediction[1].probability.toFixed(2)) * 100)
+        var label = prediction[1].className
         console.log(number, label)
         if (number == 100) {
             localStorage.setItem('levelDone', 'Hello');

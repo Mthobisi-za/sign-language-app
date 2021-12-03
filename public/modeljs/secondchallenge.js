@@ -40,7 +40,8 @@ async function init() {
 
     // append/get elements to the DOM
     const canvas = document.getElementById("canvas");
-    canvas.width = size; canvas.height = size;
+    canvas.width = size;
+    canvas.height = size;
     ctx = canvas.getContext("2d");
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) { // and class labels
@@ -57,23 +58,23 @@ async function loop(timestamp) {
 async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
-    const {pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
-    
-        // for (let i = 0; i < maxPredictions; i++) {
-        //     const classPrediction =
-        //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //     labelContainer.childNodes[i].innerHTML = classPrediction;
-        // }
+
+    // for (let i = 0; i < maxPredictions; i++) {
+    //     const classPrediction =
+    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //     labelContainer.childNodes[i].innerHTML = classPrediction;
+    // }
 
     var name = localStorage.getItem('name');
     //console.log(name)
     var status = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + name);
     if (status.data.userStatus == 'New User') {
-         console.log('true');
-        var number = ((prediction[0].probability.toFixed(2)) * 100)
-        var label = prediction[0].className
+        console.log('true');
+        var number = ((prediction[2].probability.toFixed(2)) * 100)
+        var label = prediction[2].className
         console.log(number, label)
         labelContainer.innerHTML = label + ': ' + number + '%';
         // location.replace('./learn-Thank_you.html');
@@ -103,7 +104,7 @@ async function predict() {
 
         }
     };
-     // finally draw the poses
+    // finally draw the poses
     drawPose(pose);
 }
 

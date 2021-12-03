@@ -75,8 +75,8 @@ async function predict() {
     var status = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + name);
     if (status.data.userStatus == 'New User') {
         console.log('true');
-        var number = ((prediction[3].probability.toFixed(2)) * 100)
-        var label = prediction[3].className
+        var number = ((prediction[4].probability.toFixed(2)) * 100)
+        var label = prediction[4].className
         console.log(number, label)
         location.replace('./learn-Thank_you.html');
         if (number == 100) {
@@ -89,8 +89,8 @@ async function predict() {
 
         }
     } else {
-        var number = ((prediction[3].probability.toFixed(2)) * 100)
-        var label = prediction[3].className
+        var number = ((prediction[4].probability.toFixed(2)) * 100)
+        var label = prediction[4].className
         console.log(number, label)
         if (number == 100) {
             localStorage.setItem('levelDone', 'Please');

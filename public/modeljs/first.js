@@ -78,7 +78,7 @@ async function predict() {
         var number = ((prediction[4].probability.toFixed(2)) * 100)
         var label = prediction[4].className
         console.log(number, label)
-        location.replace('./learn-Thank_you.html');
+        // location.replace('./learn-Thank_you.html');
         if (number == 100) {
             localStorage.setItem('levelDone', 'Hello');
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;

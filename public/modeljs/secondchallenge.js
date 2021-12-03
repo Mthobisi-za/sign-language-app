@@ -93,11 +93,11 @@ async function predict() {
         var number = ((prediction[2].probability.toFixed(2)) * 100)
         var label = prediction[2].className
         console.log(number, label)
+        setTimeout(() => {
+            labelContainer.innerHTML = "Congratulations you know how to sign " + label;
+        }, 3000);
         if (number == 4) {
-            localStorage.setItem('levelDone', 'Thank You');
-            setTimeout(() => {
-                labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-            }, 3000);
+
 
 
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Thank you', score: 20 })

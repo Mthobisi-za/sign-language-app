@@ -80,7 +80,7 @@ async function predict() {
         console.log(number, label)
         setTimeout(() => {
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-        }, 3000);
+        }, 4000);
         if (number == 50) {
             localStorage.setItem('levelDone', 'Hello');
             //labelContainer.innerHTML = "Congratulations you know how to sign " + label;
@@ -88,7 +88,7 @@ async function predict() {
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
                 // location.replace('./learn-Thank_you.html');
         } else {
-            
+
 
         }
     } else {
@@ -97,7 +97,7 @@ async function predict() {
         console.log(number, label)
         setTimeout(() => {
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-        }, 3000);
+        }, 4000);
         if (number == 50) {
             localStorage.setItem('levelDone', 'Please');
             //labelContainer.innerHTML = "Congratulations you know how to sign " + label;

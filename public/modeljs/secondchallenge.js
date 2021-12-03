@@ -87,7 +87,7 @@ async function predict() {
             var btn = document.querySelector('.hide')
             btn.style.display = "block"
         } else {
-            
+
         }
     } else {
         var number = ((prediction[2].probability.toFixed(2)) * 100)
@@ -95,7 +95,7 @@ async function predict() {
         console.log(number, label)
         setTimeout(() => {
             labelContainer.innerHTML = "Congratulations you know how to sign " + label;
-        }, 3000);
+        }, 4000);
         if (number == 4) {
 
 

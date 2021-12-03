@@ -1,8 +1,8 @@
 async function getName() {
     var inputName = document.querySelector('#name');
-    var status = await axios.get('http://basic-sign-language-api.herokuapp.com/getuser/' + inputName.value);
+    var status = await axios.get('https://basic-sign-language-api.herokuapp.com/getuser/' + inputName.value);
     if (status.data.err) {
-        var signUpUser = await axios.get('http://basic-sign-language-api.herokuapp.com/newuser/' + inputName.value);
+        var signUpUser = await axios.get('https://basic-sign-language-api.herokuapp.com/newuser/' + inputName.value);
         name = signUpUser.data.name;
     } else {
         //we have the user

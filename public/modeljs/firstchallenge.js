@@ -78,10 +78,12 @@ async function predict() {
         var label = prediction[1].className
         console.log(number, label)
             //  location.replace('./learn-Thank_you.html');
-
+        setTimeout(() => {
+            labelContainer.innerHTML = "Congratulations you know how to sign " + label;
+        }, 3000);
         if (number == 100) {
             localStorage.setItem('levelDone', 'Hello');
-            labelContainer.innerHTML = "Congratulations you know how to sign " + label;
+            // labelContainer.innerHTML = "Congratulations you know how to sign " + label;
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
             location.replace('./learn-Thank_you.html');
             var btn = document.querySelector('.hide')
@@ -93,14 +95,17 @@ async function predict() {
         var number = ((prediction[1].probability.toFixed(2)) * 100)
         var label = prediction[1].className
         console.log(number, label)
+        setTimeout(() => {
+            labelContainer.innerHTML = "Congratulations you know how to sign " + label;
+        }, 3000);
         if (number == 50) {
             localStorage.setItem('levelDone', 'Hello');
-            labelContainer.innerHTML = "Congratulations you know how to sign " + label;
+
 
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
-            location.replace('./learn-Thank_you.html');
+                //location.replace('./learn-Thank_you.html');
         } else {
-            labelContainer.innerHTML = "keep trying " + label;
+            // labelContainer.innerHTML = "keep trying " + label;
 
         }
     };

@@ -85,7 +85,7 @@ async function predict() {
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
                 // location.replace('./learn-Thank_you.html');
         } else {
-            labelContainer.innerHTML = "keep trying " + label;
+            labelContainer.innerHTML = "keep trying to sign" + label;
         }
     } else {
         var number = ((prediction[4].probability.toFixed(2)) * 100)

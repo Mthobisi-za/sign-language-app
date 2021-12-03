@@ -87,7 +87,7 @@ async function predict() {
             var btn = document.querySelector('.hide')
             btn.style.display = "block"
         } else {
-            labelContainer.innerHTML = "Keep trying to sign " + label;
+            
         }
     } else {
         var number = ((prediction[2].probability.toFixed(2)) * 100)

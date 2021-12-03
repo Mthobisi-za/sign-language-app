@@ -88,6 +88,7 @@ async function predict() {
             await axios.post('https://basic-sign-language-api.herokuapp.com/submit', { name, levelName: 'Hello', score: 10 })
                 // location.replace('./learn-Thank_you.html');
         } else {
+            
 
         }
     } else {
